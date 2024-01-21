@@ -1,21 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchAsyncAllImages, selectAllGalaxyImg, selectStatus} from "../../store/galaxySlice";
+import React  from 'react';
 import SearchEndData from "../../container/SearchEndData";
 import SearchStartData from "../../container/SearchStartData";
 import {GalleryContainer, SearchContainer, StyledContainer} from "./homeStyled";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import SliderComponent from "../slider/SliderComponent";
+
+
 
 const Home = () => {
-    let allGalaxyImg = useSelector((state) => state.galaxy.galaxy);
-    const status = useSelector(selectStatus);
-    const [data, setData] = useState();
-    const dispatch = useDispatch();
-
-
-    useEffect(() => {
-        dispatch(fetchAsyncAllImages())
-    }, [dispatch]);
-    console.log(allGalaxyImg);
     return (
         <>
             <StyledContainer>
@@ -24,10 +17,8 @@ const Home = () => {
                     <SearchEndData/>
                 </SearchContainer>
                 <GalleryContainer>
-
+                    <SliderComponent/>
                 </GalleryContainer>
-
-
             </StyledContainer>
         </>
     );

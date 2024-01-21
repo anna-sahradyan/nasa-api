@@ -12,5 +12,9 @@ export const SearchContainer = styled.div`
 `;
 
 export const GalleryContainer = styled.div`
-    
+  
+   
 `;
+
+
+

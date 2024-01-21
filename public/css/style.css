@@ -19,7 +19,7 @@ a {
 body {
     position: relative;
     width: 100%;
-    min-height: 100dvh;
+    height: 100dvh;
     background-image: url('../img/galaxy2.jpg');
     background-repeat: no-repeat;
     background-size: cover;

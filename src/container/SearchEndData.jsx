@@ -1,15 +1,22 @@
-import React from "react";
-import {Divider, Paper, TextField} from "@mui/material";
+import React, {useEffect, useState} from "react";
+import {Divider, IconButton, Paper, TextField} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import {useDispatch} from "react-redux";
+import {fetchAsyncAllImages} from "../store/galaxySlice";
 
 
+const SearchEndData = () => {
+    const [endDate, setEndDate] = useState("2015-07-08");
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchAsyncAllImages({ startDate: "2015-02-08", endDate }));
+    }, []);
 
+    const handleSearch = (e) => {
+        e.preventDefault();
+        dispatch(fetchAsyncAllImages({ startDate: "2015-02-08", endDate }));
+    };
 
-const SearchStartData = () => {
-
-
-    const handleInputChange = () => {
-
-    }
     return (
         <>
             <Paper
@@ -24,17 +31,20 @@ const SearchStartData = () => {
                     label="Due End Date"
                     type="datetime-local"
                     sx={{margin: 1}}
-                    // value={task.dueDate}
-                    onChange={handleInputChange}
+                     value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
                     InputLabelProps={{
                         shrink: true,
                     }}
                 />
+                <IconButton type="button" sx={{p: '10px'}} aria-label="search" onClick={handleSearch}>
+                    <SearchIcon/>
+                </IconButton>
                 <Divider sx={{height: 28, m: 0.5}} orientation="vertical"/>
             </Paper>
         </>
     );
 };
 
-export default SearchStartData;
+export default SearchEndData;
 
