@@ -1,10 +1,9 @@
 import React  from 'react';
-import SearchEndData from "../../container/SearchEndData";
-import SearchStartData from "../../container/SearchStartData";
 import {GalleryContainer, SearchContainer, StyledContainer} from "./homeStyled";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SliderComponent from "../slider/SliderComponent";
+import Search from "../../container/Search";
 
 
 
@@ -13,8 +12,7 @@ const Home = () => {
         <>
             <StyledContainer>
                 <SearchContainer>
-                    <SearchStartData/>
-                    <SearchEndData/>
+                    <Search/>
                 </SearchContainer>
                 <GalleryContainer>
                     <SliderComponent/>

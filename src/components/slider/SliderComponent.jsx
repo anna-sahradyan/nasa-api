@@ -9,6 +9,7 @@ import GallerySlide from "../slidePage/GallerySlide";
 
 import axios from "axios";
 import {Img, StyledSlide} from "../slidePage/slydePageStyled";
+import {API_KEY} from "../../api";
 
 const SliderComponent = () => {
     let allGalaxyImg = useSelector((state) => state?.galaxy?.galaxy);
@@ -18,7 +19,7 @@ const SliderComponent = () => {
         const fetchData = async () => {
             try {
                 const nowDate = new Date().toISOString().split('T')[0];
-                const res = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=m1sNxbIbSh9l0evJ29kMHT619HKpWeX1YpEbh03V&date=${nowDate}`);
+                const res = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${nowDate}`);
                 setTodayImage(res.data);
 
             } catch (error) {
@@ -53,17 +54,15 @@ const SliderComponent = () => {
 
         <TopSlider>
             <Slider{...settings}>
-                {status === "loading" ? ( <StyledSlide><Img src={todayImage.url} alt={todayImage.title}/></StyledSlide>) : (
+                {status === "loading" ? ( <StyledSlide ><Img src={todayImage.url} alt={todayImage.title}/></StyledSlide>) : (
                     allGalaxyImg.map((item, index) => {
-                        return (<>
+                        return (
                             <SliderItem key={index}>
                                 <GallerySlide key={index} item={item}/>
                             </SliderItem>
-
-                        </>);
+                        );
                     })
                 )}
-
             </Slider>
 
         </TopSlider>
